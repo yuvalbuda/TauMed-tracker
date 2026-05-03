@@ -1,0 +1,29 @@
+﻿{
+  "courses": [
+    { "id": "anatomy-a", "name": "אנטומיה א" },
+    { "id": "biochemistry", "name": "ביוכימיה" }
+  ],
+  "tasks": [
+    {
+      "id": "task-001",
+      "courseId": "anatomy-a",
+      "title": "צפייה בסרטון: מבוא למערכת השריר",
+      "type": "video",
+      "deadline": "2026-05-10T20:00"
+    },
+    {
+      "id": "task-002",
+      "courseId": "anatomy-a",
+      "title": "בוחן שבועי 1",
+      "type": "quiz",
+      "deadline": "2026-05-12T18:00"
+    },
+    {
+      "id": "task-003",
+      "courseId": "biochemistry",
+      "title": "מטלת הגשה: מסלול גליקוליזה",
+      "type": "assignment",
+      "deadline": "2026-05-14T23:59"
+    }
+  ]
+}

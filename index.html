@@ -1,0 +1,147 @@
+﻿<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מעקב ביצועים באוניברסיטה</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>מעקב קורסים ומטלות</h1>
+        <p>משימות משותפות לכל התואר + מעקב אישי מסונכרן בין מכשירים.</p>
+      </header>
+
+      <section class="card">
+        <h2>חשבון וסנכרון</h2>
+        <div class="auth-row">
+          <button id="sign-in-btn" type="button">התחברות עם Google</button>
+          <button id="sign-out-btn" type="button">התנתקות</button>
+        </div>
+        <p id="auth-status" class="empty">לא מחובר.</p>
+      </section>
+
+      <section class="card">
+        <h2>הוספת קורס</h2>
+        <form id="course-form" class="grid-form">
+          <label>
+            שם קורס
+            <input id="course-name" type="text" placeholder="אנטומיה א'" required />
+          </label>
+          <label>
+            סוג קורס
+            <select id="course-scope" required>
+              <option value="shared">משותף לכל התואר</option>
+              <option value="personal">אישי</option>
+            </select>
+          </label>
+          <button type="submit">הוסף קורס</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>הוספת משימה</h2>
+        <form id="task-form" class="grid-form">
+          <label>
+            קורס
+            <select id="task-course" required></select>
+          </label>
+          <label>
+            כותרת משימה
+            <input id="task-title" type="text" placeholder="צפייה בסרטון 3" required />
+          </label>
+          <label>
+            סוג משימה
+            <select id="task-type" required>
+              <option value="video">צפייה בסרטון</option>
+              <option value="lecture">הרצאה</option>
+              <option value="assignment">מטלה</option>
+              <option value="quiz">בוחן</option>
+            </select>
+          </label>
+          <label>
+            תאריך יעד
+            <input id="task-deadline-date" type="date" />
+          </label>
+          <label>
+            שעת יעד (אופציונלי)
+            <input id="task-deadline-time" type="time" step="60" />
+          </label>
+          <label>
+            סוג משימה
+            <select id="task-scope" required>
+              <option value="shared">משותפת לכל התואר</option>
+              <option value="personal">אישית</option>
+            </select>
+          </label>
+          <button type="submit">הוסף משימה</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>אינטגרציה</h2>
+        <div class="integrations">
+          <div>
+            <h3>ייבוא Moodle (ICS)</h3>
+            <p>העלה קובץ יומן Moodle בפורמט ICS לייבוא משימות אישיות מהיר.</p>
+            <input id="ics-input" type="file" accept=".ics,text/calendar" />
+            <button id="import-ics-btn" type="button">ייבא מ‑Moodle</button>
+          </div>
+          <div>
+            <h3>Google Calendar</h3>
+            <p>לכל משימה אפשר לפתוח יצירת אירוע ב‑Google Calendar בלחיצה.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>סינון ומעקב</h2>
+        <div class="filters">
+          <label>
+            סינון קורס
+            <select id="filter-course"></select>
+          </label>
+          <label>
+            סטטוס
+            <select id="filter-status">
+              <option value="all">הכל</option>
+              <option value="pending">לביצוע</option>
+              <option value="done">הושלם</option>
+            </select>
+          </label>
+          <label>
+            סוג
+            <select id="filter-type">
+              <option value="all">הכל</option>
+              <option value="video">צפייה בסרטון</option>
+              <option value="lecture">הרצאה</option>
+              <option value="assignment">מטלה</option>
+              <option value="quiz">בוחן</option>
+            </select>
+          </label>
+        </div>
+        <div id="stats" class="stats"></div>
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+
+    <template id="task-item-template">
+      <li class="task-item">
+        <div class="task-main">
+          <input class="task-done" type="checkbox" />
+          <div>
+            <h4 class="task-title"></h4>
+            <p class="task-meta"></p>
+          </div>
+        </div>
+        <div class="task-actions">
+          <button class="calendar-btn" type="button">Google Calendar</button>
+          <button class="delete-btn" type="button">מחק</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
